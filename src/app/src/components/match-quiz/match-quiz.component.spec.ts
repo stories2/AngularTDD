@@ -7,49 +7,44 @@ describe('MatchQuizComponent', () => {
   let component: MatchQuizComponent;
   let fixture: ComponentFixture<MatchQuizComponent>;
 
-  let fakeQuestionText: string;
-  let fakeAnswer1 = '';
-  let fakeAnswer2 = '';
-  let fakeAnswer3 = '';
-
   let quizData: MatchQuizInterface;
 
   beforeEach(async(() => {
+    quizData = undefined;
     TestBed.configureTestingModule({
       declarations: [ MatchQuizComponent ]
     })
     .compileComponents();
-    fakeQuestionText = undefined;
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MatchQuizComponent);
     component = fixture.componentInstance;
+    quizData = {
+      question: 'FAKE QUESTION',
+      answer1: 'FAKE ANSWER1',
+      answer2: 'FAKE ANSWER2',
+      answer3: 'FAKE ANSWER3'
+    } as MatchQuizInterface;
+    component.quizData = quizData;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   describe('INIT', () => {
     describe('Question TEXT', () => {
 
       beforeEach(async(() => {
-        fakeQuestionText = 'FAKE QUESTION';
-        component.questionText = fakeQuestionText;
       }));
     
       beforeEach(() => {
         fixture.detectChanges();
       });
 
-      it(`Fake question equal with ${fakeQuestionText}`, () => {
-        // fixture.nativeElement.queryByTestId('question');
-        expect(fixture.nativeElement.querySelector('[data-testid="question"]').textContent).toEqual(fakeQuestionText);
-        expect(fixture.nativeElement.querySelector('[data-testid="question"]').textContent).toEqual(fakeQuestionText);
-        expect(fixture.nativeElement.querySelector('[data-testid="question"]').textContent).toEqual(fakeQuestionText);
-        expect(fixture.nativeElement.querySelector('[data-testid="question"]').textContent).toEqual(fakeQuestionText);
+      it(`Fake question`, () => {
+        expect(fixture.nativeElement.querySelector('[data-testid="question"]').textContent).toEqual(quizData.question);
+        expect(fixture.nativeElement.querySelector('[data-testid="answer1"]').textContent).toEqual(quizData.answer1);
+        expect(fixture.nativeElement.querySelector('[data-testid="answer2"]').textContent).toEqual(quizData.answer2);
+        expect(fixture.nativeElement.querySelector('[data-testid="answer3"]').textContent).toEqual(quizData.answer3);
       });
     })
   })

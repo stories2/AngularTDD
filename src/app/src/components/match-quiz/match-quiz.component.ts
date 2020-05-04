@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchQuizInterface } from '../../interface/match-quiz.interface';
 
 @Component({
   selector: 'app-match-quiz',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./match-quiz.component.less']
 })
 export class MatchQuizComponent implements OnInit {
-  questionText: string;
+  quizData: MatchQuizInterface;
 
   constructor() {
-    // this.questionText = 'FAKE QUESTION';
   }
 
   ngOnInit() {
