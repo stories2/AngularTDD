@@ -9,7 +9,7 @@ export class MatchQuizComponent implements OnInit {
   questionText: string;
 
   constructor() {
-    this.questionText = 'FAKE QUESTION';
+    // this.questionText = 'FAKE QUESTION';
   }
 
   ngOnInit() {
