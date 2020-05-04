@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchQuizInterface } from '../../interface/match-quiz.interface';
+import { MatchQuizService } from '../../services/match-quiz.service';
 
 @Component({
   selector: 'app-match-quiz',
@@ -7,12 +8,19 @@ import { MatchQuizInterface } from '../../interface/match-quiz.interface';
   styleUrls: ['./match-quiz.component.less']
 })
 export class MatchQuizComponent implements OnInit {
-  quizData: MatchQuizInterface;
+  quizData: MatchQuizInterface = {
+    question: '',
+    answer1: '',
+    answer2: '',
+    answer3: ''
+  } as MatchQuizInterface;
 
-  constructor() {
+  constructor(private quizService: MatchQuizService) {
   }
 
   ngOnInit() {
+    this.quizService.getRandomQuestion()
+      .subscribe(questionData => this.quizData = questionData)
   }
 
 }
